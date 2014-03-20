@@ -1,8 +1,8 @@
 
-JUnitBenchmarks
----------------
+JUnitBenchmarks (SciJava)
+-------------------------
 
-Simple Java microbenchmarks written as JUnit tests.
+Fork of Carrotsearch' simple Java microbenchmarks written as JUnit tests.
 
 See JavaDoc and http://labs.carrotsearch.com/junit-benchmarks.html for more info.
 
