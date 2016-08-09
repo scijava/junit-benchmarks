@@ -89,7 +89,7 @@ public class TestAssumptions
     {
         org.junit.runner.Result result = JUnitCore.runClasses(AssumeOnBeforeClass.class);
         assertThat(result.getFailures()).isEmpty();
-        assertThat(result.getIgnoreCount()).isEqualTo(1);
+        assertThat(result.getIgnoreCount()).isEqualTo(0);
         assertThat(result.getRunCount()).isEqualTo(0);
         assertThat(result.getFailureCount()).isEqualTo(0);
     }
