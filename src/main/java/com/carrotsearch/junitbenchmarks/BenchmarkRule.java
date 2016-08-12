@@ -86,13 +86,13 @@ public final class BenchmarkRule implements TestRule
         Object object = null;
         if (statement instanceof RunAfters) {
             object = statement;
-            field = object.getClass().getDeclaredField("fNext");
+            field = getNextField(object);
             field.setAccessible(true);
             statement = (Statement) field.get(object);
         }
         if (statement instanceof RunBefores) {
             object = statement;
-            field = object.getClass().getDeclaredField("fNext");
+            field = getNextField(object);
             field.setAccessible(true);
             statement = (Statement) field.get(object);
         }
@@ -104,7 +104,7 @@ public final class BenchmarkRule implements TestRule
         }
         if (statement instanceof ExpectException) {
             object = statement;
-            field = object.getClass().getDeclaredField("fNext");
+            field = getNextField(object);
             field.setAccessible(true);
             statement = (Statement) field.get(object);
         }
@@ -112,5 +112,23 @@ public final class BenchmarkRule implements TestRule
         if (field == null) return false;
         field.set(object, new BenchmarkStatement(statement, description, consumers));
         return true;
+    }
+
+    /**
+     * Uses reflection to get the {@code next} field, but falls back to {@code fNext} since
+     * the field name has changed in JUnit 4.12.
+     * 
+     * @param object The Object that is accessed
+     * @return the field {@code next} or {@code fNext} (depending on the JUnit version
+     * @throws NoSuchFieldException
+     */
+    private Field getNextField(Object object) throws NoSuchFieldException {
+        Field field;
+        try {
+            field = object.getClass().getDeclaredField("next");
+        } catch (NoSuchFieldException e) {
+            field = object.getClass().getDeclaredField("fNext");
+        }
+        return field;
     }
 }
