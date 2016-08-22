@@ -5,7 +5,7 @@
   <!-- Project info. -->
   <groupId>org.scijava</groupId>
   <artifactId>junit-benchmarks</artifactId>
-  <version>0.7.4-scijava-SNAPSHOT</version>
+  <version>0.7.4-scijava</version>
   <packaging>jar</packaging>
 
   <name>JUnitBenchmarks</name>
@@ -46,7 +46,7 @@
   </mailingLists>
 
   <scm>
-    <tag>HEAD</tag>
+    <tag>junit-benchmarks-0.7.4-scijava</tag>
     <url>https://github.com/scijava/junit-benchmarks.git</url>
     <connection>scm:git:git://github.com/scijava/junit-benchmarks.git</connection>
     <developerConnection>scm:git:git@github.com:scijava/junit-benchmarks.git</developerConnection>
